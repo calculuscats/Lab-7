@@ -11,7 +11,7 @@ class FileIOExample {
     double[] unitPrice = new double[1];
     int[] orderID = new int[2];
     int[] productID = new int[3];
-    double[] Disount = new double[4];
+    double[] Discount = new double[4];
    
    
         try{
@@ -22,8 +22,33 @@ class FileIOExample {
              String data = in.nextLine();
              
              String[] arr = data.split(",",5);
+             //change the split array of type to string to a split array of each type
              
-           //  arr[0]=
+             int quantity1 = Integer.parseInt(arr[0]);
+              System.out.println(quantity1);
+              
+             double unitPrice1 = Double.parseDouble(arr[1]);
+               System.out.println(unitPrice1);
+             
+             int orderID1 = Integer.parseInt(arr[2]);
+               System.out.println(orderID1);
+               
+               
+             int productID1 = Integer.parseInt(arr[3]);
+               System.out.println(productID1);
+             
+             double discount1 = Double.parseDouble(arr[4]);
+               System.out.println(discount1);
+               
+               
+             
+          // for( int i = 0; i < arr.length(); i++);
+           
+      System.out.println(i + ": " + a.charAt(i));
+
+           //int sum = unitPrice1 * Quantity - (Discount * Quantity * UnitPrice)
+           
+           
              
             
              //System.out.println(data);
