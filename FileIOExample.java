@@ -1,61 +1,47 @@
 import java.util.Scanner;
 import java.io.File;
+import java.io.PrintWriter;
 
 class FileIOExample {
 
-    public static void main(String[] args) {
-    
+      public static void main(String[] args) {
+      
+         int[] quantity = new int[2820];
+         double[] unitPrice = new double[2820];
+         int[] orderID = new int[2820];
+         int[] productID = new int[2820];
+         double[] discount = new double[2820];
+
+
     //Quantity, UnitPrice, OrderID, ProductID, Discount
     
-    int[] quantity = new int[0];
-    double[] unitPrice = new double[1];
-    int[] orderID = new int[2];
-    int[] productID = new int[3];
-    double[] Discount = new double[4];
-   
-   
+        Scanner in;
         try{
            File readFile = new File("OrderDetails.txt");
-           Scanner in = new Scanner(readFile);
+           in = new Scanner(readFile);
            
+            int counter = 0;
+     
            while(in.hasNext()){
+              
              String data = in.nextLine();
              
-             String[] arr = data.split(",",5);
-             //change the split array of type to string to a split array of each type
+             String[] arr = data.split(","); //change the split array of string type to a split array of each correct type
              
-             int quantity1 = Integer.parseInt(arr[0]);
-              System.out.println(quantity1);
-              
-             double unitPrice1 = Double.parseDouble(arr[1]);
-               System.out.println(unitPrice1);
+             quantity[counter] = Integer.parseInt(arr[0]);
              
-             int orderID1 = Integer.parseInt(arr[2]);
-               System.out.println(orderID1);
-               
-               
-             int productID1 = Integer.parseInt(arr[3]);
-               System.out.println(productID1);
+             unitPrice[counter] = Double.parseDouble(arr[1]);
              
-             double discount1 = Double.parseDouble(arr[4]);
-               System.out.println(discount1);
-               
-               
-             
-          // for( int i = 0; i < arr.length(); i++);
-           
-      System.out.println(i + ": " + a.charAt(i));
+             orderID[counter] = Integer.parseInt(arr[2]);
 
-           //int sum = unitPrice1 * Quantity - (Discount * Quantity * UnitPrice)
-           
-           
+             productID[counter] = Integer.parseInt(arr[3]);
              
-            
-             //System.out.println(data);
-         
-             
+             discount[counter] = Double.parseDouble(arr[4]);
+          
+                       
            }
-           
+          
+              
            in.close();
            
           } catch (Exception e){
@@ -63,70 +49,35 @@ class FileIOExample {
 
           
          }
-         
-     }
-}
 
-          
-           //keep doing while exists
-           /*for (int i = 0; i < 2820; i++) {//stores up to 2819 index
-          String str = in.nextLine(); //set the string str to next line
-          System.out.println(str);/*
-          
-           }
-           
-           //System.out.println("5");
+           /* for( int i = 0; i < 2820; i++){
             
-         
-          
-         in.close(); 
-          
-     
-       } catch (Exception e){
-            //System.out.println("Error: Could not open file.");
-
-         }
-         
-           }
+               double total = (unitPrice[i] * quantity[i] -(discount[i] * quantity[i] * unitPrice[i]));    
+            
+             } */ 
+            
            
-           //System.out.println("5");
-         System.out.println("5");
+            try{
+            
+                PrintWriter outfile = new PrintWriter("data.txt");
+                
+                for( int i = 0; i < 2820; i++){
+            
+                  double total = (unitPrice[i] * quantity[i] -(discount[i] * quantity[i] * unitPrice[i]));    
+                  
+                  //System.out.printf(%.2d
+            
+                    outfile.println(orderID[i] + "   " + total);
+                }
+          
+                    outfile.close();
+                
+                
+             }catch (Exception e){
+             System.out.println(e.getMessage());
+             }
+         }  
+   }  
 
-         
-  //String[] str = new String [5];
-
-   
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*We create a scanner for reading file
-try(Scanner scanner = new Scanner(Paths.get("OrderDetails.txt"))) {
-
-     //we read the file until all lines have been read
-     while (scanner.hasNextLine()) {
+ 
      
-          // we read one line
-        String row = scanner.nextLine();
-        //we print the line that we read
-        System.out.println(row);
-        
-     }
-} catch (Exeption e) {
-    System.out.println("Error: " + e.getMessage());*/
-    
-
-
-
-
